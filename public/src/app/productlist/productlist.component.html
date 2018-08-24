@@ -1,0 +1,13 @@
+<div class="box">
+  <h2> Products List </h2>
+  <ul>
+    {{products | json }}
+    <li *ngFor="let x of this.products">
+      {{x.title}} ${{x.price}} 
+      <img src="{{x.image}}" alt="image of product">
+      <button [routerLink]="['/edit', x._id]"> Edit </button>
+      <button (click)="deleteProduct(x._id)"> Delete</button>
+    </li>
+  </ul>
+  <router-outlet></router-outlet>
+</div>

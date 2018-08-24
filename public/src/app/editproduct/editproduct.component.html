@@ -1,0 +1,23 @@
+<div class="box" *ngIf="updatedProduct">
+  {{updatedProduct | json }}
+  <form (submit)="editProduct(updatedProduct._id, updatedProduct)">
+    <label> Title </label>
+    <div *ngIf="error">
+      <p *ngIf="error.payload.errors.title">{{error.payload.errors.title.message}}</p>
+    </div>
+    <input type="text" name="updatedProduct.title" [(ngModel)]="updatedProduct.title" value="updatedProduct.title">
+    <label> Price </label>
+    <div *ngIf="error">
+      <p *ngIf="error.payload.errors.price">{{error.payload.errors.price.message}}</p>
+    </div>
+    <input type="number" name="updatedProduct.price" [(ngModel)]="updatedProduct.price" value="updatedProduct.price">
+    <label> Image URL</label>
+    <div *ngIf="error">
+      <p *ngIf="error.payload.errors.image">{{error.payload.errors.image.message}}</p>
+    </div>
+    <input type="text" name="updateProduct.image" [(ngModel)]="updatedProduct.image" value="updatedProduct.image">
+    <input type="submit" value="Update">
+    <input type="submit" (click)="goProductList()" value="Cancel">
+  </form>
+</div>
+  

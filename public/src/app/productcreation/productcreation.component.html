@@ -1,0 +1,23 @@
+<div class="box">
+  <h2> Create a New Product</h2>
+  {{this.createdproduct.title}} ${{this.createdproduct.price}} {{this.createdproduct.image}}
+  <form (submit)="createProduct()">
+    <label> Title </label> 
+    <div *ngIf="error">
+      <p *ngIf="error.payload.errors.title">{{error.payload.errors.title.message}}</p>
+    </div>
+    <input type="text" name="this.createdproduct.title" required minlength="3" [(ngModel)]="this.createdproduct.title">
+    <label> Price </label>
+    <div *ngIf="error">
+      <p *ngIf="error.payload.errors.price">{{error.payload.errors.price.message}}</p>
+    </div>
+    <input type="number" name="this.createdproduct.price" required [(ngModel)]="this.createdproduct.price">
+    <label> Image URL</label>
+    <div *ngIf="error">
+      <p *ngIf="error.payload.errors.image">{{error.payload.errors.image.message}}</p>
+    </div>
+    <input type="text" name="this.createdproduct.image" required [(ngModel)]="this.createdproduct.image">
+    <input type="submit" value="Create">
+    <input type="submit" (click)="goProductList()" value="Cancel">
+  </form>
+</div>
